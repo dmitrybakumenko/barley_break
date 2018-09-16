@@ -9,11 +9,11 @@ import android.widget.ImageView
 import com.bakumenko.barley_break.barley_break.R
 import com.transitionseverywhere.Rotate
 import com.transitionseverywhere.TransitionManager
+import java.util.*
 
 class ActivitySplash : AppCompatActivity() {
 
-    private val DurSplash = 2000L
-    private val DurAnimation = 500L
+    private val DurSplash = 3000L
 
     private val _splashHandler: Handler = Handler()
     private val _splashRunnable: Runnable = Runnable {
@@ -22,8 +22,8 @@ class ActivitySplash : AppCompatActivity() {
         finish()
     }
 
-    lateinit var _img: ImageView;
-    lateinit var _pnlRoot: ViewGroup;
+    private lateinit var _img: ImageView;
+    private lateinit var _pnlRoot: ViewGroup;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +31,14 @@ class ActivitySplash : AppCompatActivity() {
 
         _img = findViewById(R.id.img)
         _pnlRoot = findViewById(R.id.pnlRoot)
+
+        updImgRotation()
     }
 
     override fun onResume() {
         super.onResume()
 
-        doAnimation()
+        postUpdImgRotation()
         _splashHandler.postDelayed(_splashRunnable, DurSplash);
     }
 
@@ -46,13 +48,18 @@ class ActivitySplash : AppCompatActivity() {
         _splashHandler.removeCallbacks(_splashRunnable)
     }
 
-    fun doAnimation() {
+    fun postUpdImgRotation() {
         _img.postDelayed({
             if (_img.isShown) {
                 TransitionManager.beginDelayedTransition(_pnlRoot, Rotate())
-                _img.rotation += 90
-                doAnimation()
+                updImgRotation()
+
+                postUpdImgRotation()
             }
-        }, DurAnimation);
+        }, 500);
+    }
+
+    private fun updImgRotation() {
+        _img.rotation += Random().nextFloat() * 360
     }
 }
