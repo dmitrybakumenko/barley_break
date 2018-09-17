@@ -7,6 +7,6 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        ExceptionHelper::bindReporter(this);
+        ExceptionHelper.bindReporter(this);
     }
 }
