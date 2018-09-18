@@ -1,4 +1,4 @@
-package com.bakumenko.barley_break.barley_break.ui.activities
+package com.bakumenko.barleybreak.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 import android.widget.ImageView
-import com.bakumenko.barley_break.barley_break.R
+import com.bakumenko.barleybreak.R
 import com.transitionseverywhere.Rotate
 import com.transitionseverywhere.TransitionManager
 import java.util.*
@@ -22,8 +22,8 @@ class ActivitySplash : AppCompatActivity() {
         finish()
     }
 
-    private lateinit var _img: ImageView;
-    private lateinit var _pnlRoot: ViewGroup;
+    private lateinit var _img: ImageView
+    private lateinit var _pnlRoot: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class ActivitySplash : AppCompatActivity() {
         super.onResume()
 
         postUpdImgRotation()
-        _splashHandler.postDelayed(_splashRunnable, DurSplash);
+        _splashHandler.postDelayed(_splashRunnable, DurSplash)
     }
 
     override fun onPause() {
@@ -56,7 +56,7 @@ class ActivitySplash : AppCompatActivity() {
 
                 postUpdImgRotation()
             }
-        }, 500);
+        }, 500)
     }
 
     private fun updImgRotation() {

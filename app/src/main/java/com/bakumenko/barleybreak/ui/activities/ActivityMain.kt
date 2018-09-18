@@ -1,8 +1,8 @@
-package com.bakumenko.barley_break.barley_break.ui.activities
+package com.bakumenko.barleybreak.ui.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.bakumenko.barley_break.barley_break.R
+import com.bakumenko.barleybreak.R
 
 class ActivityMain : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
