@@ -3,7 +3,6 @@ package com.bakumenko.barleybreak.ui.activities
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bakumenko.barleybreak.R
@@ -11,7 +10,7 @@ import com.transitionseverywhere.Rotate
 import com.transitionseverywhere.TransitionManager
 import java.util.*
 
-class ActivitySplash : AppCompatActivity() {
+class ActivitySplash : ActivityBase() {
 
     private val DurSplash = 3000L
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Environment
+import android.util.Log
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -35,9 +36,10 @@ class ExceptionHandler(c: Context) : Thread.UncaughtExceptionHandler {
 
         if (state == Environment.MEDIA_MOUNTED) {
             val reportBuilder = StringBuilder()
+
             reportBuilder.append("\n\n\n")
                     .append(SimpleDateFormat("dd.MM.yy HH:mm", Locale.US).format(dumpDate)).append("\n")
-                    .append(String.format("Version: %s (%d)\n", _versionName, _versionCode))
+                    .append(String.format("Version: %s (%s)\n", _versionName, _versionCode))
                     .append(t.toString()).append("\n")
 
             processThrowable(e, reportBuilder)

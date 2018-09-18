@@ -10,17 +10,17 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        app = this
+        _app = this
         ExceptionHandler.bind(this)
     }
 
     companion object {
-        private var app: MyApp? = null
+        private var _app: MyApp? = null
 
         var instance: MyApp
-            get() = app ?: throw IllegalStateException("MyApp isn't create")
+            get() = _app ?: throw IllegalStateException("MyApp isn't create")
             private set(value) {
-                app = value
+                _app = value
             }
     }
 }
