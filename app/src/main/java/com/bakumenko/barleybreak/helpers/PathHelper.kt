@@ -76,7 +76,6 @@ class PathHelper private constructor() {
                         }
                         _pathStorage = file.absolutePath
                     }
-
                 }
             }
 

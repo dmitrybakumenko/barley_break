@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.bakumenko.barley_break.barley_break"
+        applicationId "com.bakumenko.barleybreak"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
