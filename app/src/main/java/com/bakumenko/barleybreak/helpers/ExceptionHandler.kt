@@ -3,6 +3,7 @@ package com.bakumenko.barleybreak.helpers
 import android.content.Context
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Environment
 import android.util.Log
 import java.io.File
@@ -11,20 +12,22 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ExceptionHandler(c: Context) : Thread.UncaughtExceptionHandler {
-
-    private var context: Context = c
+class ExceptionHandler(context: Context) : Thread.UncaughtExceptionHandler {
 
     private var _versionName = "unknown"
     private var _versionCode = "unknown"
 
     init {
-        val packageManager = c.packageManager
+        val packageManager = context.packageManager
         val packInfo: PackageInfo
         try {
-            packInfo = packageManager.getPackageInfo(context.getPackageName(), 0)
+            packInfo = packageManager.getPackageInfo(context.packageName, 0)
             _versionName = packInfo.versionName
-            _versionCode = packInfo.longVersionCode.toString()
+            _versionCode =
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
+                        packInfo.longVersionCode.toString()
+                    else
+                        packInfo.versionCode.toString()
         } catch (ignore: PackageManager.NameNotFoundException) {
 
         }
